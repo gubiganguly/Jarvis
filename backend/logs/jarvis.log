@@ -1,0 +1,12 @@
+2025-04-26 20:42:32,666 - jarvis - INFO - Received webhook for session 1234567890: 'What ideas did I have this week?'
+2025-04-26 20:42:32,667 - jarvis - DEBUG - New session buffer created for 1234567890
+2025-04-26 20:42:32,667 - jarvis - DEBUG - Started new finalization task for session 1234567890
+2025-04-26 20:42:32,668 - jarvis - DEBUG - Starting finalization watch for session 1234567890
+2025-04-26 20:42:35,673 - jarvis - INFO - Pause detected, finalizing session 1234567890 with 32 chars
+2025-04-26 20:42:35,673 - jarvis - DEBUG - Removed processing task for session 1234567890
+2025-04-26 20:42:35,674 - jarvis - INFO - Processing transcription: What ideas did I have this week?...
+2025-04-26 20:42:36,421 - jarvis - INFO - Detected intent: Retrieve
+2025-04-26 20:42:36,422 - jarvis - INFO - Retrieving memories
+2025-04-26 20:42:37,126 - jarvis - DEBUG - Extracted retrieval filters: {'memory_type': 'Business Idea', 'date_from': None, 'date_to': None}
+2025-04-26 20:42:37,827 - jarvis - INFO - Retrieved 2 memories
+2025-04-26 20:42:37,828 - jarvis - DEBUG - Retrieved memories: [{'id': 'c8b6e9b6-7886-4909-9fc4-5cedc7c656ac', 'title': '"Launching SkyRacer: A Drone Racing Brand"', 'type': 'Business Idea', 'content': 'You plan to start a drone racing brand named SkyRacer.', 'memory_metadata': {'entities': {'people': [], 'places': [], 'organizations': ['SkyRacer']}, 'dates': [], 'keywords': ['drone racing', 'brand', 'SkyRacer'], 'sentiment': 'neutral', 'main_topics': ['drone racing', 'brand creation']}, 'created_at': '2025-04-27T00:54:32.274314'}, {'id': '83fbb46a-7dc0-4e46-8694-ec2b6e86a698', 'title': 'Voicebot Solutions for Dental Practices', 'type': 'Business Idea', 'content': 'The plan is to establish a voicebot agency specifically catering to dentists.', 'memory_metadata': {'entities': {'people': [], 'places': [], 'organizations': []}, 'dates': [], 'keywords': ['voicebot', 'agency', 'dentists'], 'sentiment': 'neutral', 'main_topics': ['business idea', 'voice technology', 'dental industry']}, 'created_at': '2025-04-27T01:09:51.182665'}]
