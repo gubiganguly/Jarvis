@@ -323,3 +323,547 @@ TypeError: create_connection() got an unexpected keyword argument 'extra_headers
 2025-04-27 22:01:59,790 - jarvis - INFO - Transcription: Yo, Christian, check it out. I got fireworks.ai working and it's instant fast. It's almost scary bro. Hite. Hell yeah.
 2025-04-27 22:02:00,013 - jarvis - INFO - Transcription: Yo, Christian, check it out. I got fireworks.ai working and it's instant fast. It's almost scary, bro. Height. Hell yeah.
 2025-04-27 22:02:33,787 - jarvis - INFO - Client disconnected from WebSocket session 1745809305.266769
+2025-04-27 22:05:40,943 - jarvis - INFO - Transcription: And.
+2025-04-27 22:05:41,008 - jarvis - INFO - Transcription: as
+2025-04-27 22:05:41,094 - jarvis - INFO - Transcription: As a guy.
+2025-04-27 22:05:41,179 - jarvis - INFO - Transcription: As it goes.
+2025-04-27 22:05:41,279 - jarvis - INFO - Transcription: Hey, how's it going?
+2025-04-27 22:05:44,419 - jarvis - INFO - Transcription: Hey, how's it going? What's going on?
+2025-04-27 22:05:46,655 - jarvis - INFO - Transcription: Hey, how's it going? What's going on? That's pretty good.
+2025-04-27 22:05:46,746 - jarvis - INFO - Transcription: Hey, how's it going? What's going on? That's pretty good.
+2025-04-27 22:05:46,872 - jarvis - INFO - Transcription: Hey, how's it going? What's going on? That's pretty good.
+2025-04-27 22:05:47,316 - jarvis - INFO - Transcription: Hey, how's it going? what's going on? that's pretty good
+2025-04-27 22:05:47,429 - jarvis - INFO - Transcription: Hey, how's it going? What's going on? That's pretty good.
+2025-04-27 22:05:48,942 - jarvis - INFO - Client disconnected from WebSocket session 1745809539.4146502
+2025-04-27 22:17:46,045 - jarvis - INFO - Transcription: Hey,
+2025-04-27 22:17:46,225 - jarvis - INFO - Transcription: Hey, how's it going?
+2025-04-27 22:17:48,634 - jarvis - INFO - Processing transcription: Hey, how's it going?...
+2025-04-27 22:17:48,931 - jarvis - ERROR - Error processing transcription: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/gubiisepic/Projects/Jarvis/backend/main.py", line 55, in process_transcription
+    intent = detect_intent(text)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/services/llm_service.py", line 135, in detect_intent
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 925, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1034, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-04-27 22:18:44,490 - jarvis - INFO - Client disconnected from WebSocket session 1745810264.630522
+2025-04-27 22:19:02,622 - jarvis - DEBUG - Classifying text: Buy milk tomorrow...
+2025-04-27 22:19:02,835 - jarvis - ERROR - Error classifying text: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/gubiisepic/Projects/Jarvis/backend/services/llm_service.py", line 35, in classify_text
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 925, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1034, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-04-27 22:19:54,255 - jarvis - DEBUG - Classifying text: Buy milk tomorrow...
+2025-04-27 22:19:54,401 - jarvis - ERROR - Error classifying text: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/gubiisepic/Projects/Jarvis/backend/services/llm_service.py", line 35, in classify_text
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 925, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1034, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-04-27 22:19:59,402 - jarvis - DEBUG - Classifying text: Buy milk tomorrow...
+2025-04-27 22:19:59,538 - jarvis - ERROR - Error classifying text: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/gubiisepic/Projects/Jarvis/backend/services/llm_service.py", line 35, in classify_text
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 925, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1034, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-04-27 22:20:10,383 - jarvis - DEBUG - Classifying text: Buy milk tomorrow...
+2025-04-27 22:20:10,534 - jarvis - ERROR - Error classifying text: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/gubiisepic/Projects/Jarvis/backend/services/llm_service.py", line 35, in classify_text
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 925, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1034, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-04-27 22:20:25,519 - jarvis - DEBUG - Classifying text: Buy milk tomorrow...
+2025-04-27 22:20:25,755 - jarvis - ERROR - Error classifying text: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/gubiisepic/Projects/Jarvis/backend/services/llm_service.py", line 35, in classify_text
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 925, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1034, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-04-27 22:20:46,437 - jarvis - DEBUG - Classifying text: Buy milk tomorrow...
+2025-04-27 22:20:46,633 - jarvis - ERROR - Error classifying text: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/gubiisepic/Projects/Jarvis/backend/services/llm_service.py", line 35, in classify_text
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 925, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1034, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-04-27 22:21:17,123 - jarvis - DEBUG - Classifying text: Buy milk tomorrow...
+2025-04-27 22:21:23,429 - jarvis - DEBUG - Classification result: Reminder
+2025-04-27 22:21:40,204 - jarvis - DEBUG - Classifying text: Buy milk tomorrow...
+2025-04-27 22:21:40,361 - jarvis - ERROR - Error classifying text: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/gubiisepic/Projects/Jarvis/backend/services/llm_service.py", line 35, in classify_text
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 925, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1034, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-04-27 22:22:36,999 - jarvis - DEBUG - Classifying text: Buy milk tomorrow...
+2025-04-27 22:22:37,320 - jarvis - ERROR - Error classifying text: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/gubiisepic/Projects/Jarvis/backend/services/llm_service.py", line 35, in classify_text
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 925, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1034, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-04-27 22:23:09,062 - jarvis - DEBUG - Classifying text: Buy milk tomorrow...
+2025-04-27 22:23:09,239 - jarvis - ERROR - Error classifying text: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/gubiisepic/Projects/Jarvis/backend/services/llm_service.py", line 37, in classify_text
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 925, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1034, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-04-27 22:23:30,377 - jarvis - DEBUG - Classifying text: Buy milk tomorrow...
+2025-04-27 22:23:30,538 - jarvis - ERROR - Error classifying text: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/gubiisepic/Projects/Jarvis/backend/services/llm_service.py", line 37, in classify_text
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 925, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gubiisepic/Projects/Jarvis/backend/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1034, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************0_kA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-04-27 22:26:17,499 - jarvis - DEBUG - Classifying text: Buy milk tomorrow...
+2025-04-27 22:26:18,037 - jarvis - DEBUG - Classification result: Reminder
+2025-04-27 22:26:33,020 - jarvis - DEBUG - Classifying text: Buy milk tomorrow...
+2025-04-27 22:26:33,474 - jarvis - DEBUG - Classification result: Task
+2025-04-27 22:27:33,001 - jarvis - INFO - Transcription: And.
+2025-04-27 22:27:33,087 - jarvis - INFO - Transcription: Hey,
+2025-04-27 22:27:33,180 - jarvis - INFO - Transcription: Hey, how's it going?
+2025-04-27 22:27:35,538 - jarvis - INFO - Processing transcription: Hey, how's it going?...
+2025-04-27 22:27:36,451 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:27:40,660 - jarvis - INFO - Transcription: Hey, how's it going? What projects did
+2025-04-27 22:27:40,764 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I
+2025-04-27 22:27:40,872 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have?
+2025-04-27 22:27:41,337 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have
+2025-04-27 22:27:41,437 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have?
+2025-04-27 22:27:42,129 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last
+2025-04-27 22:27:42,530 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week?
+2025-04-27 22:28:02,208 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello?
+2025-04-27 22:28:07,378 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello? Can you explain some of the projects
+2025-04-27 22:28:07,454 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello? Can you explain
+2025-04-27 22:28:07,576 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello? Yeah, can you explain to me
+2025-04-27 22:28:08,158 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello? Yeah, can you explain to me what
+2025-04-27 22:28:08,261 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello? Yeah, can you explain to me what I
+2025-04-27 22:28:08,441 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello? Yeah, can you explain to me what ID
+2025-04-27 22:28:08,533 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello? Yeah, can you explain to me what idea
+2025-04-27 22:28:08,621 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello? Yeah, can you explain to me what ideas
+2025-04-27 22:28:08,815 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello? Yeah, can you explain to me what ideas I
+2025-04-27 22:28:09,009 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello? Yeah, can you explain to me what ideas I had
+2025-04-27 22:28:09,120 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello? Yeah, can you explain to me what ideas I had?
+2025-04-27 22:28:09,221 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello? Yeah, can you explain to me what ideas I had last
+2025-04-27 22:28:09,438 - jarvis - INFO - Transcription: Hey, how's it going? What projects did I have last week? Hello? Yeah, can you explain to me what ideas I had last week?
+2025-04-27 22:28:40,162 - jarvis - INFO - Client disconnected from WebSocket session 1745810851.534451
+2025-04-27 22:29:39,381 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:29:40,048 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:29:40,049 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:29:40,767 - jarvis - INFO - Transcription: Hey, how's it going?
+2025-04-27 22:29:43,053 - jarvis - INFO - Processing transcription: Hey, how's it going?...
+2025-04-27 22:29:43,981 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:29:43,982 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:29:44,983 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:29:45,470 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:29:45,471 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:29:46,473 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:29:46,895 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:29:46,895 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:29:47,896 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:29:48,436 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:29:48,436 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:29:49,437 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:29:49,978 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:29:49,978 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:29:49,980 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind
+2025-04-27 22:29:49,980 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me
+2025-04-27 22:29:50,266 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what project
+2025-04-27 22:29:50,619 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what project I
+2025-04-27 22:29:50,712 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what project idea
+2025-04-27 22:29:50,802 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what project ideas
+2025-04-27 22:29:51,007 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what project ideas I have?
+2025-04-27 22:29:51,108 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what project ideas I had
+2025-04-27 22:29:51,320 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what project ideas I had last week?
+2025-04-27 22:29:52,578 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what project ideas I had last week.
+2025-04-27 22:29:54,984 - jarvis - INFO - Processing transcription: Hey, how's it going? Hey, can you remind me what p...
+2025-04-27 22:29:55,454 - jarvis - INFO - Detected intent: Retrieve
+2025-04-27 22:29:58,218 - jarvis - INFO - Processing result: {'intent': 'Retrieve', 'query': "Hey, how's it going? Hey, can you remind me what project ideas I had last week.", 'filters': {'memory_type': 'Business Idea', 'date_from': '2023-10-23', 'date_to': '2023-10-29'}, 'results': []}
+2025-04-27 22:29:59,219 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:29:59,641 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:29:59,641 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:30:00,643 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:30:03,290 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:30:03,291 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:30:04,292 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:30:04,707 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:30:04,708 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:30:05,709 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:30:06,199 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:30:06,200 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:30:07,201 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:30:07,704 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:30:07,704 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:30:08,705 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:30:09,215 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:30:09,216 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:30:10,217 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:30:11,279 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:30:11,279 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:30:11,400 - jarvis - INFO - Client disconnected from WebSocket session 1745810977.3779469
+2025-04-27 22:32:12,401 - jarvis - INFO - Transcription: Hey.
+2025-04-27 22:32:12,498 - jarvis - INFO - Transcription: Hey, how's it going?
+2025-04-27 22:32:14,817 - jarvis - INFO - Processing transcription: Hey, how's it going?...
+2025-04-27 22:32:15,598 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:32:15,599 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:32:16,600 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:32:17,215 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:32:17,216 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:32:18,216 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:32:18,634 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:32:18,634 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:32:19,328 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you hear my
+2025-04-27 22:32:19,421 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me
+2025-04-27 22:32:19,900 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what
+2025-04-27 22:32:20,007 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what I
+2025-04-27 22:32:20,116 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what ID
+2025-04-27 22:32:20,218 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what idea
+2025-04-27 22:32:20,320 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what ideas
+2025-04-27 22:32:20,646 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what ideas I have
+2025-04-27 22:32:20,926 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what ideas I had
+2025-04-27 22:32:21,123 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what ideas I had last year
+2025-04-27 22:32:21,231 - jarvis - INFO - Transcription: Hey, how's it going? Hey, can you remind me what ideas I had last week?
+2025-04-27 22:32:23,640 - jarvis - INFO - Processing transcription: Hey, how's it going? Hey, can you remind me what i...
+2025-04-27 22:32:24,204 - jarvis - INFO - Detected intent: Retrieve
+2025-04-27 22:32:25,805 - jarvis - INFO - Processing result: {'intent': 'Retrieve', 'query': "Hey, how's it going? Hey, can you remind me what ideas I had last week?", 'filters': {'memory_type': 'Business Idea', 'date_from': '2023-10-23', 'date_to': '2023-10-29'}, 'results': []}
+2025-04-27 22:32:25,805 - jarvis - INFO - Retrieved memories:
+2025-04-27 22:32:26,807 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:32:27,267 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:32:27,267 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:32:28,269 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:32:28,714 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:32:28,714 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:32:29,715 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:32:30,234 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:32:30,235 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:32:31,235 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:32:31,761 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:32:31,762 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:32:32,763 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:32:33,307 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:32:33,308 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:32:34,310 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:32:34,762 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:32:34,763 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:32:34,860 - jarvis - INFO - Client disconnected from WebSocket session 1745811130.81319
+2025-04-27 22:33:38,604 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:33:39,201 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:33:39,202 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:33:39,925 - jarvis - INFO - Transcription: Hey,
+2025-04-27 22:33:40,333 - jarvis - INFO - Transcription: Hey, can you.
+2025-04-27 22:33:40,409 - jarvis - INFO - Transcription: Hey,
+2025-04-27 22:33:40,658 - jarvis - INFO - Transcription: Hey, can you tell me
+2025-04-27 22:33:41,231 - jarvis - INFO - Transcription: Hey, can you tell me all the
+2025-04-27 22:33:41,316 - jarvis - INFO - Transcription: Hey, can you tell me all
+2025-04-27 22:33:41,414 - jarvis - INFO - Transcription: Hey, can you tell me all the items
+2025-04-27 22:33:41,509 - jarvis - INFO - Transcription: Hey, can you tell me all the
+2025-04-27 22:33:41,594 - jarvis - INFO - Transcription: Hey, can you tell me all the ideas
+2025-04-27 22:33:41,971 - jarvis - INFO - Transcription: Hey, can you tell me all the ideas I have
+2025-04-27 22:33:42,067 - jarvis - INFO - Transcription: Hey, can you tell me all the ideas I've had
+2025-04-27 22:33:44,208 - jarvis - INFO - Processing transcription: Hey, can you tell me all the ideas I've had...
+2025-04-27 22:33:44,791 - jarvis - INFO - Detected intent: Retrieve
+2025-04-27 22:33:47,252 - jarvis - INFO - Processing result: {'intent': 'Retrieve', 'query': "Hey, can you tell me all the ideas I've had", 'filters': {'memory_type': 'Business Idea', 'date_from': None, 'date_to': None}, 'results': [{'id': 'c8b6e9b6-7886-4909-9fc4-5cedc7c656ac', 'title': '"Launching SkyRacer: A Drone Racing Brand"', 'type': 'Business Idea', 'content': 'You plan to start a drone racing brand named SkyRacer.', 'memory_metadata': {'entities': {'people': [], 'places': [], 'organizations': ['SkyRacer']}, 'dates': [], 'keywords': ['drone racing', 'brand', 'SkyRacer'], 'sentiment': 'neutral', 'main_topics': ['drone racing', 'brand creation']}, 'created_at': '2025-04-27T00:54:32.274314'}, {'id': '83fbb46a-7dc0-4e46-8694-ec2b6e86a698', 'title': 'Voicebot Solutions for Dental Practices', 'type': 'Business Idea', 'content': 'The plan is to establish a voicebot agency specifically catering to dentists.', 'memory_metadata': {'entities': {'people': [], 'places': [], 'organizations': []}, 'dates': [], 'keywords': ['voicebot', 'agency', 'dentists'], 'sentiment': 'neutral', 'main_topics': ['business idea', 'voice technology', 'dental industry']}, 'created_at': '2025-04-27T01:09:51.182665'}]}
+2025-04-27 22:33:47,252 - jarvis - INFO - Retrieved memories:
+2025-04-27 22:33:47,252 - jarvis - INFO - Memory 1:
+2025-04-27 22:33:47,252 - jarvis - INFO -   Title: "Launching SkyRacer: A Drone Racing Brand"
+2025-04-27 22:33:47,252 - jarvis - INFO -   Type: Business Idea
+2025-04-27 22:33:47,252 - jarvis - INFO -   Content: You plan to start a drone racing brand named SkyRacer.
+2025-04-27 22:33:47,252 - jarvis - INFO -   Created: 2025-04-27T00:54:32.274314
+2025-04-27 22:33:47,253 - jarvis - INFO -   Metadata: {'entities': {'people': [], 'places': [], 'organizations': ['SkyRacer']}, 'dates': [], 'keywords': ['drone racing', 'brand', 'SkyRacer'], 'sentiment': 'neutral', 'main_topics': ['drone racing', 'brand creation']}
+2025-04-27 22:33:47,253 - jarvis - INFO - Memory 2:
+2025-04-27 22:33:47,253 - jarvis - INFO -   Title: Voicebot Solutions for Dental Practices
+2025-04-27 22:33:47,253 - jarvis - INFO -   Type: Business Idea
+2025-04-27 22:33:47,253 - jarvis - INFO -   Content: The plan is to establish a voicebot agency specifically catering to dentists.
+2025-04-27 22:33:47,253 - jarvis - INFO -   Created: 2025-04-27T01:09:51.182665
+2025-04-27 22:33:47,253 - jarvis - INFO -   Metadata: {'entities': {'people': [], 'places': [], 'organizations': []}, 'dates': [], 'keywords': ['voicebot', 'agency', 'dentists'], 'sentiment': 'neutral', 'main_topics': ['business idea', 'voice technology', 'dental industry']}
+2025-04-27 22:33:48,254 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:33:48,692 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:33:48,693 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:33:49,694 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:33:50,413 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:33:50,413 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:33:51,415 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:33:51,848 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:33:51,849 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:33:52,850 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:33:53,386 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:33:53,387 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:33:54,388 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:33:54,826 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:33:54,827 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:33:54,969 - jarvis - INFO - Client disconnected from WebSocket session 1745811216.60156
+2025-04-27 22:35:49,751 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:35:50,426 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:35:50,426 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:35:50,622 - jarvis - INFO - Transcription: Hey,
+2025-04-27 22:35:50,795 - jarvis - INFO - Transcription: Hey, so I just
+2025-04-27 22:35:50,871 - jarvis - INFO - Transcription: Hey.
+2025-04-27 22:35:51,117 - jarvis - INFO - Transcription: Hey, so I just came
+2025-04-27 22:35:51,214 - jarvis - INFO - Transcription: Hey, so I just came up
+2025-04-27 22:35:51,399 - jarvis - INFO - Transcription: Hey, so I just came up with
+2025-04-27 22:35:51,683 - jarvis - INFO - Transcription: Hey, so I just came up with a new
+2025-04-27 22:35:51,973 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea
+2025-04-27 22:35:52,566 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea.
+2025-04-27 22:35:53,204 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out.
+2025-04-27 22:35:53,805 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea, hear me out Hear me out.
+2025-04-27 22:35:54,239 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out.
+2025-04-27 22:35:54,628 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea, hear me out. Hear me out.
+2025-04-27 22:35:54,727 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out.
+2025-04-27 22:35:55,029 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea
+2025-04-27 22:35:55,112 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea
+2025-04-27 22:35:55,218 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea
+2025-04-27 22:35:55,692 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is
+2025-04-27 22:35:56,585 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that
+2025-04-27 22:35:56,969 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I
+2025-04-27 22:35:57,065 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I,
+2025-04-27 22:35:57,156 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want
+2025-04-27 22:35:57,256 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to
+2025-04-27 22:35:57,448 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want
+2025-04-27 22:35:57,550 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create
+2025-04-27 22:35:58,371 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a
+2025-04-27 22:35:58,658 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a dot
+2025-04-27 22:35:58,836 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a dog
+2025-04-27 22:35:59,024 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy
+2025-04-27 22:35:59,118 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app
+2025-04-27 22:36:01,376 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which
+2025-04-27 22:36:01,473 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses
+2025-04-27 22:36:01,762 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses a
+2025-04-27 22:36:01,851 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses
+2025-04-27 22:36:01,947 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses elements
+2025-04-27 22:36:02,050 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LL.
+2025-04-27 22:36:02,152 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLS
+2025-04-27 22:36:02,351 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLM
+2025-04-27 22:36:02,560 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs
+2025-04-27 22:36:02,868 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs.
+2025-04-27 22:36:02,972 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs
+2025-04-27 22:36:04,210 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs.
+2025-04-27 22:36:04,549 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a
+2025-04-27 22:36:04,659 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs, so it's a So it's a
+2025-04-27 22:36:04,774 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs, so it's a chat app So it's a
+2025-04-27 22:36:04,866 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs, so it's a chat So it's a
+2025-04-27 22:36:04,979 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs, so it's a chatbot So it's a
+2025-04-27 22:36:05,088 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs so it's a chat box So it's a
+2025-04-27 22:36:05,189 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a chat bot.
+2025-04-27 22:36:06,483 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a chatbot for
+2025-04-27 22:36:06,688 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a chatbot for dogs.
+2025-04-27 22:36:06,788 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a chat bot for dogs.
+2025-04-27 22:36:06,971 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a chat bot for dogs
+2025-04-27 22:36:07,154 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a chat bot for dogs,
+2025-04-27 22:36:07,348 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a chat bot for dogs health.
+2025-04-27 22:36:07,438 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a chatbot for dogs health.
+2025-04-27 22:36:07,538 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a chat bot for dogs health.
+2025-04-27 22:36:07,823 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a chat bot for dogs health specifically.
+2025-04-27 22:36:08,609 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a chat bot for dogs health specifically so that
+2025-04-27 22:36:08,696 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a chat bot for dogs health specifically.
+2025-04-27 22:36:08,791 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a chatbot for dogs health specifically.
+2025-04-27 22:36:08,894 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically.
+2025-04-27 22:36:09,003 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea
+2025-04-27 22:36:09,110 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is
+2025-04-27 22:36:09,441 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much
+2025-04-27 22:36:09,544 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is
+2025-04-27 22:36:09,642 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much
+2025-04-27 22:36:11,419 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much,
+2025-04-27 22:36:11,505 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much
+2025-04-27 22:36:11,611 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much I gave it
+2025-04-27 22:36:11,716 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much I gave it a
+2025-04-27 22:36:11,919 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it
+2025-04-27 22:36:12,013 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much I gave it
+2025-04-27 22:36:12,117 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much I gave it a
+2025-04-27 22:36:12,213 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much I gave it a dog
+2025-04-27 22:36:12,309 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's
+2025-04-27 22:36:12,408 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's influence
+2025-04-27 22:36:12,501 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information
+2025-04-27 22:36:13,444 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and
+2025-04-27 22:36:13,546 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then
+2025-04-27 22:36:14,480 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then basically
+2025-04-27 22:36:14,581 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based
+2025-04-27 22:36:14,684 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off
+2025-04-27 22:36:14,796 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that
+2025-04-27 22:36:14,891 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information
+2025-04-27 22:36:15,173 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that
+2025-04-27 22:36:15,268 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information
+2025-04-27 22:36:15,449 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information,
+2025-04-27 22:36:15,545 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information there's
+2025-04-27 22:36:15,649 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information there's a
+2025-04-27 22:36:15,748 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information there's a challenge
+2025-04-27 22:36:15,853 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information there's a chat
+2025-04-27 22:36:15,958 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information there's a chat box
+2025-04-27 22:36:16,286 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information there's a chatbot
+2025-04-27 22:36:16,505 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chatbot
+2025-04-27 22:36:16,615 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat bot,
+2025-04-27 22:36:17,278 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information there's a chat bot
+2025-04-27 22:36:17,338 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information there's a chat bot where
+2025-04-27 22:36:17,456 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information there's a chat bot where I can
+2025-04-27 22:36:17,563 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat bot where I can
+2025-04-27 22:36:17,672 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat box where I can talk
+2025-04-27 22:36:17,769 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat box where I can talk about
+2025-04-27 22:36:17,974 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat box where I can talk about it
+2025-04-27 22:36:18,074 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat box where I can talk about it.
+2025-04-27 22:36:18,183 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat box where I can talk about it and
+2025-04-27 22:36:18,397 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat box where I can talk about it and get
+2025-04-27 22:36:18,504 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat bot where I can talk about it and get
+2025-04-27 22:36:19,227 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat bot where I can talk about it and get health and
+2025-04-27 22:36:19,293 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat bot where I can talk about it and get health information.
+2025-04-27 22:36:19,395 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat bot where I can talk about it and get health information
+2025-04-27 22:36:19,601 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat bot where I can talk about it and get health information about
+2025-04-27 22:36:19,824 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat bot where I can talk about it and get health information about my
+2025-04-27 22:36:19,938 - jarvis - INFO - Transcription: Hey, so I just came up with a new idea. Hear me out. The idea is that I want to create a doggy app which uses LLMs. So it's a that I bought for dogs health specifically. So the idea is pretty much, I gave it a dog's information and then based off of that information, there's a chat bot where I can talk about it and get health information about my dog.
+2025-04-27 22:36:22,455 - jarvis - INFO - Processing transcription: Hey, so I just came up with a new idea. Hear me ou...
+2025-04-27 22:36:22,943 - jarvis - INFO - Detected intent: Save
+2025-04-27 22:36:22,943 - jarvis - DEBUG - Classifying text: Hey, so I just came up with a new idea. Hear me ou...
+2025-04-27 22:36:23,231 - jarvis - DEBUG - Classification result: Business Idea
+2025-04-27 22:36:25,704 - jarvis - INFO - Saving memory to DB for user 00000000-0000-0000-0000-000000000001, type: Business Idea
+2025-04-27 22:36:25,706 - jarvis - DEBUG - Generating embedding for memory content
+2025-04-27 22:36:27,086 - jarvis - DEBUG - Generated title: Dog Health App with LLM-Powered Advice
+2025-04-27 22:36:27,089 - jarvis - INFO - Memory saved successfully with title: Dog Health App with LLM-Powered Advice
+2025-04-27 22:36:27,158 - jarvis - INFO - Processing result: {'intent': 'Save', 'type': 'Business Idea', 'content': "I have an idea for a dog health app using large language models (LLMs). Users input their dog's information, and a chatbot provides health-related advice based on that data.", 'title': 'Dog Health App with LLM Chatbot', 'memory_metadata': {'entities': {'people': [], 'places': [], 'organizations': []}, 'dates': [], 'keywords': ['doggy app', 'LLMs', "dog's health", 'chat bot', 'health information'], 'sentiment': 'positive', 'main_topics': ['dog health', 'technology', 'chatbot', 'LLMs']}}
+2025-04-27 22:36:28,159 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:36:28,533 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:36:28,534 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:36:29,535 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:36:29,989 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:36:29,989 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:36:30,990 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:36:31,710 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:36:31,711 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:36:32,712 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:36:33,591 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:36:33,591 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:36:34,593 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:36:35,082 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:36:35,083 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:36:36,083 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:36:36,545 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:36:36,546 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:36:37,547 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:36:38,102 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:36:38,102 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:36:39,105 - jarvis - INFO - Processing transcription: ...
+2025-04-27 22:36:39,528 - jarvis - INFO - Detected intent: Neither
+2025-04-27 22:36:39,529 - jarvis - INFO - Processing result: {'intent': 'Neither', 'message': 'No memory action needed.'}
+2025-04-27 22:36:39,655 - jarvis - INFO - Client disconnected from WebSocket session 1745811347.749266

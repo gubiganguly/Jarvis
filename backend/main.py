@@ -17,7 +17,6 @@ from websockets.exceptions import ConnectionClosed
 
 # Load environment variables
 load_dotenv()
-
 FIREWORKS_API_KEY = os.getenv("FIREWORKS_API_KEY")
 
 # Add these to your existing imports and globals
@@ -121,12 +120,28 @@ async def finalize_after_pause(session_id: str):
             time_since_last = time.time() - last_activity.get(session_id, 0)
 
             if time_since_last >= PAUSE_THRESHOLD and session_id in transcript_buffer:
-                text = transcript_buffer.pop(session_id)
-                asyncio.create_task(process_transcription(text))
-                break
-
+                text = transcript_buffer[session_id]
+                # Clear buffer but keep entry
+                transcript_buffer[session_id] = ""
+                result = await process_transcription(text)
+                logger.info(f"Processing result: {result}")
+                
+                # Enhanced logging for retrieve intent
+                if result.get("intent") == "Retrieve" and "results" in result:
+                    logger.info("Retrieved memories:")
+                    for i, memory in enumerate(result["results"]):
+                        logger.info(f"Memory {i+1}:")
+                        logger.info(f"  Title: {memory.get('title')}")
+                        logger.info(f"  Type: {memory.get('type')}")
+                        logger.info(f"  Content: {memory.get('content')}")
+                        logger.info(f"  Created: {memory.get('created_at')}")
+                        logger.info(f"  Metadata: {memory.get('memory_metadata')}")
+                # Don't break - keep monitoring for more pauses
+            
             if session_id not in transcript_buffer:
                 break
+    except Exception as e:
+        logger.error(f"Error in finalize_after_pause: {e}", exc_info=True)
     finally:
         if session_id in processing_tasks:
             del processing_tasks[session_id]
@@ -135,39 +150,6 @@ async def finalize_after_pause(session_id: str):
 async def health_check():
     return {"status": "ok"}
 
-@app.post("/vapi-webhook")
-async def vapi_webhook(request: VapiWebhookRequest):
-    session_id = request.session_id
-
-    if session_id not in transcript_buffer:
-        transcript_buffer[session_id] = ""
-
-    transcript_buffer[session_id] += " " + request.text if transcript_buffer[session_id] else request.text
-    last_activity[session_id] = time.time()
-
-    if session_id in processing_tasks and not processing_tasks[session_id].done():
-        processing_tasks[session_id].cancel()
-
-    processing_tasks[session_id] = asyncio.create_task(finalize_after_pause(session_id))
-
-    return {"status": "buffered", "session_id": session_id, "current_buffer": transcript_buffer[session_id]}
-
-@app.post("/memory/save")
-async def save_memory(memory: MemoryItem):
-    logger.info(f"Manually saving memory for user {memory.user_id}")
-    return {"status": "saved", "memory_id": "placeholder_id"}
-
-def format_memory_response(result: dict) -> str:
-    if result["intent"] == "Save":
-        return f"I've saved your {result['type'].lower()} about {result['title']}."
-    elif result["intent"] == "Retrieve":
-        if result["results"]:
-            memories = "\n".join([f"• {m['title']}: {m['content']}" for m in result["results"][:3]])
-            return f"Here are your memories:\n{memories}"
-        else:
-            return "I couldn't find any matching memories."
-    else:
-        return "I'm listening."
 
 @app.websocket("/stream")
 async def websocket_endpoint(websocket: WebSocket):
@@ -175,7 +157,14 @@ async def websocket_endpoint(websocket: WebSocket):
     session_id = str(time.time())
     transcription_state = {}
     
+    # Initialize buffer and activity tracking
+    transcript_buffer[session_id] = ""
+    last_activity[session_id] = time.time()
+    
     try:
+        # Start pause detection task
+        processing_tasks[session_id] = asyncio.create_task(finalize_after_pause(session_id))
+        
         # Create aiohttp ClientSession and WebSocketClientProtocol
         async with aiohttp.ClientSession() as session:
             async with session.ws_connect(
@@ -183,7 +172,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 headers={"Authorization": FIREWORKS_API_KEY}
             ) as fw_ws:
                 # Create a task to receive from Fireworks
-                receive_task = asyncio.create_task(receive_from_fireworks_aiohttp(fw_ws, websocket, transcription_state))
+                receive_task = asyncio.create_task(receive_from_fireworks_aiohttp(fw_ws, websocket, transcription_state, session_id))
                 
                 # Main loop to receive audio from client and send to Fireworks
                 while True:
@@ -195,11 +184,18 @@ async def websocket_endpoint(websocket: WebSocket):
     except Exception as e:
         logger.error(f"WebSocket error: {e}", exc_info=True)
     finally:
-        # Clean up any tasks
+        # Clean up tasks and buffer
         if 'receive_task' in locals():
             receive_task.cancel()
+        if session_id in processing_tasks:
+            processing_tasks[session_id].cancel()
+            del processing_tasks[session_id]
+        if session_id in transcript_buffer:
+            del transcript_buffer[session_id]
+        if session_id in last_activity:
+            del last_activity[session_id]
 
-async def receive_from_fireworks_aiohttp(fw_ws, client_ws, state):
+async def receive_from_fireworks_aiohttp(fw_ws, client_ws, state, session_id):
     try:
         async for msg in fw_ws:
             if msg.type == aiohttp.WSMsgType.TEXT:
@@ -219,7 +215,12 @@ async def receive_from_fireworks_aiohttp(fw_ws, client_ws, state):
                     # Construct full transcript from all segments
                     full_transcript = " ".join(state.values())
                     
-                    # Send transcript to client
+                    # Update buffer and last activity time
+                    if session_id in transcript_buffer:
+                        transcript_buffer[session_id] = full_transcript
+                        last_activity[session_id] = time.time()
+                    
+                    # Send transcript to client (for debugging)
                     await client_ws.send_text(full_transcript)
                     logger.info(f"Transcription: {full_transcript}")
             
