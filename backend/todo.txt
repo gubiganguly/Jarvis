@@ -1,0 +1,16 @@
+Flow:
+1. User speaks
+2. STT sends chunks to /webhook
+    - Webhook waits for 3 sec pause
+4. Process text
+    - Save, Retrieve or Neither
+6. Generate response
+7. Chat history?
+8. TTS
+9. Interuption handler
+
+
+
+1. Find out hosted STT (Firw)
+2. Setup TTS
+3. Figure out how interuptions would work
