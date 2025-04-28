@@ -1,0 +1,148 @@
+1. Activate  venv
+    - source venv/bin/activate
+2. pip install requirements.txt
+
+Docker Postgres Environment:
+1. Start Postgres Container (DB terminal): docker compose up -d
+2. Enter DB Container (DB terminal): docker exec -it jarvis_db bash
+3. Log into postgres and enter jarvis_memory db shell: psql -U jarvis -d jarvis_memory
+    - \l: list databases
+    - \c database_name: connect to database
+    - \dt: list tables
+    - \q: quit
+    - exit: exit docker shell
+4. Stop Postgres: docker compose down
+5. Delete Postgres: docker compose down -v
+
+
+Alembic Migrations:
+1. Create migration: alembic revision --autogenerate -m "migration message"
+    - Edit migration file to add/modify columns
+2. Apply migrations: alembic upgrade head
+3. Rollback migrations: alembic downgrade
+
+
+
+📚 High-Level Summary of Jarvis (Your Personal Memory Assistant)
+1. 🎙 Voice Input ➔ FastAPI Backend
+User speaks naturally (like talking to a real assistant).
+
+VAPI (or another frontend) streams voice transcriptions to your /vapi-webhook FastAPI endpoint.
+
+The transcription comes in small text chunks (not the full thought yet).
+
+Main.py buffers these chunks by session.
+
+✅ Key idea: No immediate processing yet — just gathering thoughts in real-time.
+
+2. ⏳ Pause Detection ➔ Finalization
+You set a PAUSE_THRESHOLD (3 seconds of silence).
+
+If the user stops talking for 3 seconds, your backend:
+
+Combines the buffered text chunks.
+
+Calls process_transcription() to process the full finalized thought.
+
+✅ Key idea: User doesn't need to "submit" anything — speaking naturally triggers automatic processing after a pause.
+
+3. 🧠 Process Transcription: Classify Intent (Save, Retrieve, Neither)
+When text is finalized, Jarvis:
+
+Calls detect_intent(text) to figure out:
+
+Is this meant to save a memory?
+
+Retrieve something from memory?
+
+Or just general conversation?
+
+✅ Key idea: No need for special commands like "save" or "retrieve" — Jarvis intelligently detects it.
+
+4. ✍️ If Intent is Save:
+If the intent is "Save", Jarvis:
+
+Classifies what type of memory it is (task, idea, reminder, etc.) via classify_text()
+
+Summarizes the memory (summarize_text()).
+
+Generates a short title (title_text()).
+
+Extracts metadata (entities, dates, topics) via extract_metadata().
+
+Embeds the content into a vector using OpenAI Embeddings (text-embedding-3-small).
+
+Asynchronously saves everything (content, title, metadata, vector, user id) into Postgres + pgvector using SQLAlchemy async.
+
+✅ Key idea:
+Saving memories happens completely asynchronously, no interruption to the conversation.
+
+5. 🔎 If Intent is Retrieve:
+If the intent is "Retrieve", Jarvis:
+
+Runs extract_retrieval_filters(text) to figure out:
+
+What type of memories? (Tasks, Ideas, Notes, etc.)
+
+Optional date filters? (Past week, month, etc.)
+
+Queries Postgres using semantic search (vector.l2_distance(query_vector)) — finds memories closest to the query.
+
+Applies optional type filters and date filters if needed.
+
+Retrieves top N best matching memories.
+
+✅ Key idea:
+Memory retrieval is fast, filtered, semantic, and personalized by user.
+
+6. 🧹 Post-Processing Memory Results (Optional)
+You now added the summarize_retrieved_memories() function!
+
+If multiple memories are retrieved:
+
+Instead of listing all raw results,
+
+You can pass them to GPT-4o and create a clean, thoughtful paragraph summary.
+
+This makes retrieval feel intelligent and "human" instead of robotic.
+
+✅ Key idea:
+Results are understandable and feel organized, not a messy dump.
+
+7. 🏛 The Database Structure
+Postgres with pgvector stores:
+
+Memory ID
+
+Memory type (business idea, task, reminder, etc.)
+
+Content (summarized)
+
+Title (for easy browsing)
+
+Metadata (JSON: topics, people, sentiment, etc.)
+
+Vector (1536-dim OpenAI embedding)
+
+User ID (in case you ever want multiple users)
+
+Created At timestamp
+
+✅ Key idea:
+Database is designed for fast lookup, smart retrieval, and expansion (multiple users, memory types, etc.).
+
+🛠️ Tech Stack Overview
+
+Layer	Tools	Purpose
+Voice API	VAPI (or another frontend)	Capture live speech and transcriptions
+Backend	FastAPI	Handle transcription stream, processing
+Async Processing	asyncio, uvicorn	Non-blocking memory save/retrieval
+LLM Understanding	GPT-4o (OpenAI)	Classify, summarize, extract metadata, detect intent, retrieve filters, summarize results
+Database	Postgres + pgvector	Store structured memories + semantic vectors
+ORM	SQLAlchemy async	Safe and efficient DB operations
+🎯 Your System Right Now Can:
+✅ Understand and organize raw thoughts.
+✅ Decide if something needs to be saved or retrieved.
+✅ Store ideas/tasks/notes intelligently.
+✅ Retrieve old memories based on meaning, not just keywords.
+✅ (Optionally) Summarize what it finds into clear, clean paragraphs.
