@@ -195,3 +195,72 @@ def summarize_retrieved_memories(memories: list) -> str:
     )
     return response.choices[0].message.content
 
+def generate_conversational_response(result: dict, original_text: str = "") -> str:
+    """Generates a conversational response based on the processing result.
+    
+    Handles different intents (Neither, Save, Retrieve) with appropriate response styles.
+    """
+    intent = result.get("intent", "Neither")
+    
+    if intent == "Neither":
+        # For general conversation - use original text directly
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are Jarvis, a helpful and friendly AI assistant. Respond conversationally to the user's message."
+                },
+                {"role": "user", "content": original_text}
+            ],
+            temperature=0.7
+        )
+        return response.choices[0].message.content
+        
+    elif intent == "Save":
+        # For memory saves
+        memory_type = result.get("type", "memory")
+        memory_title = result.get("title", "your thought")
+        
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {
+                    "role": "system",
+                    "content": f"You are Jarvis, a helpful AI assistant. The user just shared something that was saved as a {memory_type} with the title '{memory_title}'. Acknowledge this briefly in a friendly way and respond to their input conversationally."
+                },
+                {"role": "user", "content": result.get("content", "")}
+            ],
+            temperature=0.7
+        )
+        return response.choices[0].message.content
+        
+    elif intent == "Retrieve":
+        # For memory retrievals
+        query = result.get("query", "")
+        memories = result.get("results", [])
+        
+        if not memories:
+            return "I searched your memories but couldn't find anything matching your request. Is there something else I can help you with?"
+        
+        # Compile memories into context
+        memory_context = "\n\n".join([
+            f"Memory: {m.get('title', 'Untitled')}\nType: {m.get('type', 'Note')}\nContent: {m.get('content', 'No content')}"
+            for m in memories
+        ])
+        
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are Jarvis, a helpful AI assistant with access to the user's memory database. The user asked a question, and you've retrieved some relevant memories. Using ONLY the provided memories, respond conversationally as if you're having a natural discussion. Don't mention the technical aspects of memory retrieval - just incorporate the information naturally."
+                },
+                {"role": "system", "content": f"User query: {query}\n\nRetrieved memories:\n{memory_context}"}
+            ],
+            temperature=0.7
+        )
+        return response.choices[0].message.content
+    
+    return "I'm not sure how to respond to that. How can I help you today?"
+
