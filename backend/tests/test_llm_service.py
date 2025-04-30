@@ -14,7 +14,7 @@ from pathlib import Path
 # Add parent directory to sys.path to import the services module
 sys.path.append(str(Path(__file__).parent.parent))
 
-from services.llm_service import classify_text, summarize_text, extract_metadata
+from services.infrence.llm_service import classify_text, summarize_text, extract_metadata
 
 def test_classify_text():
     text = "Buy milk tomorrow"

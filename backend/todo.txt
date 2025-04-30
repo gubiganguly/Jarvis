@@ -1,16 +1,65 @@
-Flow:
-1. User speaks
-2. STT sends chunks to /webhook
-    - Webhook waits for 3 sec pause
-4. Process text
-    - Save, Retrieve or Neither
-6. Generate response
-7. Chat history?
-8. TTS
-9. Interuption handler
+Reduce Pause Detection Thresholds
+Your PAUSE_THRESHOLD (2s) and SILENCE_THRESHOLD (3s) are too high
+These force unnecessary waiting before processing utterances
+Consider reducing to 0.5-1s and 1.5-2s respectively
+
+Parallelize LLM Processing
+Your system makes multiple sequential GPT-4o calls for each utterance
+Use asyncio.gather() to run independent operations concurrently (classification, metadata extraction, etc.)
 
 
 
-1. Find out hosted STT (Firw)
-2. Setup TTS
-3. Figure out how interuptions would work
+Reduce Model Complexity
+Using GPT-4o for simple tasks like classification is overkill
+Use faster models (GPT-3.5) for intent detection, classification
+
+Implement Response Streaming
+Start generating TTS as soon as you have the first part of the response
+Don't wait for complete response before starting speech
+
+Batch LLM Requests
+Combine multiple prompts into single API calls where possible
+Use function calling to get multiple outputs in one request
+
+Move Memory Operations Off Critical Path
+Database operations add significant latency
+Make non-critical memory operations asynchronous
+
+
+Cache Common Responses
+Implement response caching for frequent queries
+Use vector similarity to find cached responses
+
+Optimize WebSocket Communication
+Reduce message sizes and frequency
+Use binary formats where possible
+
+
+
+
+
+
+
+
+
+Frontend Prompt
+Create a beautiful and modern voice assistant web app.
+
+Core requirements:
+1. **Audio Recorder**: A central button to start/stop microphone recording and stream the audio to a backend WebSocket at `ws://localhost:8000/stream`. Use the MediaRecorder API or Web Audio API. The audio must stream live in small chunks.
+2. **Transcription Display**: Show live transcription updates received from the WebSocket as the user speaks. Display them in a chat-style message feed.
+3. **Bot Response Playback**: When the backend sends a final transcription response (e.g., "Transcription completed" or a bot message), display it and streams a synthetic audio response 
+4. **Session Handling**: Automatically manage WebSocket connection lifecycle. Connect on mount, disconnect on unmount, and handle errors gracefully.
+5. **Chat History UI**: Add a scrollable, elegant chat interface (like ChatGPT). Separate user utterances and bot responses clearly with timestamps and avatar icons.
+6. **Settings Panel (Optional)**: A simple sidebar or modal to configure the backend URL (`ws://...`), audio sample rate, and other advanced settings.
+
+Design should be:
+- Responsive (mobile and desktop friendly)
+- Minimalist but visually appealing (use rounded corners, shadows, and soft colors)
+- Easy to plug into a backend — just replace the WebSocket URL to connect
+
+Don’t use any heavy design libraries like MUI or Bootstrap — Tailwind and native HTML/CSS components only. Use functional React components and hooks.
+
+Name the project `Jarvis UI`.
+
+Double check to linting and type errors and keep. It should work seamlessly with my @main.py  

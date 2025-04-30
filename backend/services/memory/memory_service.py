@@ -12,18 +12,18 @@ from sqlalchemy import Column, String, DateTime, Enum, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from pgvector.sqlalchemy import Vector
 
-from openai import OpenAI
+from openai import AsyncOpenAI
 from dotenv import load_dotenv
 from logging_config import logger
 
 from models.memory_model import Base, Memory, MemoryType
-from services.llm_service import classify_text, summarize_text, extract_metadata, title_text
+from services.infrence.llm_service import classify_text, summarize_text, extract_metadata, title_text
 
 # Load environment variables from .env file
 load_dotenv()
 
 # Connect to OpenAI
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # SQLAlchemy setup
 DATABASE_URL = os.getenv("DATABASE_URL")  # like: postgresql+asyncpg://jarvis:jarvispassword@localhost:5432/jarvis_memory
@@ -80,7 +80,7 @@ async def retrieve_memory_from_db(
     async with async_session() as session:
         try:
             # Step 1: Embed the query
-            embed_response = client.embeddings.create(
+            embed_response = await client.embeddings.create(
                 model="text-embedding-3-small",
                 input=[query_text]
             )

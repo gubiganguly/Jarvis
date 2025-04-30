@@ -15,16 +15,18 @@ in Notion databases or ChromaDB for persistent memory and easy retrieval.
 # NOTE: Make async later
 
 import os
-from openai import OpenAI
+import asyncio
+from openai import AsyncOpenAI
 from dotenv import load_dotenv
 from logging_config import logger
+import json
 
 load_dotenv(override=True)  # Load environment variables from .env file
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 if not os.environ.get("OPENAI_API_KEY"):
     raise ValueError("OPENAI_API_KEY environment variable is not set")
 
-def classify_text(text: str) -> str:
+async def classify_text(text: str) -> str:
     """Classifies the provided text using GPT-4o.
     
     Maps natural speech to specific content types based on Jarvis's purpose as a personal memory assistant.
@@ -32,7 +34,7 @@ def classify_text(text: str) -> str:
     """
     logger.debug(f"Classifying text: {text[:50]}...")
     try:
-        response = client.chat.completions.create(
+        response = await client.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {
@@ -60,14 +62,14 @@ def classify_text(text: str) -> str:
         logger.error(f"Error classifying text: {e}", exc_info=True)
         raise
 
-def summarize_text(text: str) -> str:
+async def summarize_text(text: str) -> str:
     """Summarizes the provided text using GPT-4o.
     
     Creates concise versions of longer voice inputs to maintain clarity in the Notion database.
     Particularly valuable for lengthy brainstorming sessions or complex ideas, making them
     more browsable and digestible when reviewing later.
     """
-    response = client.chat.completions.create(
+    response = await client.chat.completions.create(
         model="gpt-4o",
         messages=[
             {
@@ -80,7 +82,7 @@ def summarize_text(text: str) -> str:
     )
     return response.choices[0].message.content
 
-def extract_metadata(text: str) -> dict:
+async def extract_metadata(text: str) -> dict:
     """Extracts metadata from the provided text using GPT-4o.
     
     Powers the intelligent organization capabilities of Jarvis by identifying key elements:
@@ -92,7 +94,7 @@ def extract_metadata(text: str) -> dict:
     This structured metadata enables automatic organization into appropriate Notion databases
     without manual tagging or formatting.
     """
-    response = client.chat.completions.create(
+    response = await client.chat.completions.create(
         model="gpt-4o",
         messages=[
             {
@@ -105,16 +107,15 @@ def extract_metadata(text: str) -> dict:
         response_format={"type": "json_object"}
     )
     
-    import json
     return json.loads(response.choices[0].message.content)
 
-def title_text(text: str) -> str:
+async def title_text(text: str) -> str:
     """Generates a concise title for the provided text using GPT-4o.
     
     Creates short, descriptive titles for memories to improve browsability
     and quick identification in the database.
     """
-    response = client.chat.completions.create(
+    response = await client.chat.completions.create(
         model="gpt-4o",
         messages=[
             {
@@ -127,12 +128,12 @@ def title_text(text: str) -> str:
     )
     return response.choices[0].message.content
 
-def detect_intent(text: str) -> str:
+async def detect_intent(text: str) -> str:
     """Detects the intent of the provided text using GPT-4o.
     
     Determines if the user's message is related to memory storage, retrieval, or general conversation.
     """
-    response = client.chat.completions.create(
+    response = await client.chat.completions.create(
         model="gpt-4o",
         messages=[
             {
@@ -151,14 +152,12 @@ def detect_intent(text: str) -> str:
     )
     return response.choices[0].message.content
 
-
-
-def extract_retrieval_filters(text: str) -> dict:
+async def extract_retrieval_filters(text: str) -> dict:
     """Extracts retrieval filters from the provided text using GPT-4o if using retrieval intent.
     
     Parses user retrieval requests to determine specific memory types and time ranges.
     """
-    response = client.chat.completions.create(
+    response = await client.chat.completions.create(
         model="gpt-4o",
         messages=[
             {
@@ -176,13 +175,11 @@ If no information is found, leave the fields null. Return a JSON object."""
         temperature=0.0, 
         response_format={"type": "json_object"}
     )
-    import json
     return json.loads(response.choices[0].message.content)
 
-
-def summarize_retrieved_memories(memories: list) -> str:
+async def summarize_retrieved_memories(memories: list) -> str:
     """Summarizes a list of memories into a brief paragraph."""
-    response = client.chat.completions.create(
+    response = await client.chat.completions.create(
         model="gpt-4o",
         messages=[
             {
@@ -195,7 +192,7 @@ def summarize_retrieved_memories(memories: list) -> str:
     )
     return response.choices[0].message.content
 
-def generate_conversational_response(result: dict, original_text: str = "") -> str:
+async def generate_conversational_response(result: dict, original_text: str = "") -> str:
     """Generates a conversational response based on the processing result.
     
     Handles different intents (Neither, Save, Retrieve) with appropriate response styles.
@@ -204,7 +201,7 @@ def generate_conversational_response(result: dict, original_text: str = "") -> s
     
     if intent == "Neither":
         # For general conversation - use original text directly
-        response = client.chat.completions.create(
+        response = await client.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {
@@ -222,7 +219,7 @@ def generate_conversational_response(result: dict, original_text: str = "") -> s
         memory_type = result.get("type", "memory")
         memory_title = result.get("title", "your thought")
         
-        response = client.chat.completions.create(
+        response = await client.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {
@@ -249,7 +246,7 @@ def generate_conversational_response(result: dict, original_text: str = "") -> s
             for m in memories
         ])
         
-        response = client.chat.completions.create(
+        response = await client.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {
@@ -263,4 +260,49 @@ def generate_conversational_response(result: dict, original_text: str = "") -> s
         return response.choices[0].message.content
     
     return "I'm not sure how to respond to that. How can I help you today?"
+
+async def generate_conversational_response_streaming(result: dict, original_text: str = ""):
+    """Generates a streaming conversational response based on the processing result."""
+    intent = result.get("intent", "Neither")
+    
+    system_prompt = ""
+    user_prompt = ""
+    
+    if intent == "Neither":
+        system_prompt = "You are Jarvis, a helpful and friendly AI assistant. Respond conversationally to the user's message."
+        user_prompt = original_text
+    elif intent == "Save":
+        memory_type = result.get("type", "memory")
+        memory_title = result.get("title", "your thought")
+        system_prompt = f"You are Jarvis, a helpful AI assistant. The user just shared something that was saved as a {memory_type} with the title '{memory_title}'. Acknowledge this briefly in a friendly way and respond to their input conversationally."
+        user_prompt = result.get("content", "")
+    elif intent == "Retrieve":
+        query = result.get("query", "")
+        memories = result.get("results", [])
+        
+        if not memories:
+            # For special case with no memories, return a simple string
+            # This will be handled specially in the caller
+            return "I searched your memories but couldn't find anything matching your request. Is there something else I can help you with?"
+        
+        memory_context = "\n\n".join([
+            f"Memory: {m.get('title', 'Untitled')}\nType: {m.get('type', 'Note')}\nContent: {m.get('content', 'No content')}"
+            for m in memories
+        ])
+        
+        system_prompt = "You are Jarvis, a helpful AI assistant with access to the user's memory database. The user asked a question, and you've retrieved some relevant memories. Using ONLY the provided memories, respond conversationally as if you're having a natural discussion. Don't mention the technical aspects of memory retrieval - just incorporate the information naturally."
+        user_prompt = f"User query: {query}\n\nRetrieved memories:\n{memory_context}"
+    
+    # Stream the response - use await here now
+    response_stream = await client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt}
+        ],
+        temperature=0.7,
+        stream=True
+    )
+    
+    return response_stream
 
